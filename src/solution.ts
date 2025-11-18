@@ -88,4 +88,65 @@ function printBookDetails(book:Book): void {
 
 
 
+function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]):(string | number)[]{
+    const result : (string | number)[] = [];
+    function addValue<T>(value:T){
+        let exists = false
+        for( let i = 0; i <result.length; i++){
+            if(result[i] === value){
+                exists = true;
+                break;
+            }
+        }
+
+        if(!exists){
+             result.push(value)
+        }      
+        
+    }
+
+
+    for (let i = 0; i< arr1.length; i++){
+        addValue(arr1[i]);
+    }
+
+    for (let i = 0; i< arr2.length; i++){
+        addValue(arr2[i]);
+    }
+
+
+     return result;
+}
+
+
+
+
+
+
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number; 
+};
+
+function calculateTotalPrice(products: Product[]): number {
+  
+  if (products.length === 0) return 0;
+
+  return products.reduce((total, product) => {
+    
+    const basePrice = product.price * product.quantity;
+
+    const discountAmount = product.discount 
+      ? (basePrice * product.discount) / 100 
+      : 0;
+
+    const finalPrice = basePrice - discountAmount;
+   
+    return total + finalPrice;
+  }, 0); 
+}
+
+
 
