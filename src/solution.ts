@@ -90,7 +90,7 @@ function printBookDetails(book:Book): void {
 
 function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]):(string | number)[]{
     const result : (string | number)[] = [];
-    function addValue<T>(value:T){
+    function addValue(value:string | number){
         let exists = false
         for( let i = 0; i <result.length; i++){
             if(result[i] === value){
@@ -107,11 +107,11 @@ function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]):(
 
 
     for (let i = 0; i< arr1.length; i++){
-        addValue(arr1[i]);
+        addValue(arr1[i]!);
     }
 
     for (let i = 0; i< arr2.length; i++){
-        addValue(arr2[i]);
+        addValue(arr2[i]!);
     }
 
 
